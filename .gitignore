@@ -99,3 +99,6 @@ ENV/
 .mypy_cache/
 
 the-config.cfg
+
+Things to do.txt
+
