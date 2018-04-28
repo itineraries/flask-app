@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Sam's simple app</title>
+</head>
+
+<body>
+
+{% block content %}
+    <h1>Sign In</h1>
+    <form action="/login" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=50) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=50) }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+
+        {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+        <p>
+            Forgot Your Password?
+            <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+        </p>
+
+    </form>
+{% endblock %}
+        {%if error%}
+        <p> {{error}}</p>
+        {%endif%}
+
+</body>
+</html>
