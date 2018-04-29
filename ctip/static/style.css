@@ -398,7 +398,7 @@ html, body {
 }
 
 .first-logout-image {
-    background-image: url(../static/NYU White Bus - Driver.png);
+    /*background-image: url(/static/NYU White Bus - Driver.png);*/
     background-repeat: no-repeat;
     
     display: block;
