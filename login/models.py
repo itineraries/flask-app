@@ -1,4 +1,4 @@
-from ctip import db, login_manager, app
+from login import db, login_manager, app
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from flask_login import UserMixin
 from passlib.hash import sha256_crypt

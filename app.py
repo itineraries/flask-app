@@ -1,1 +1,0 @@
-from ctip import app
