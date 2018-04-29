@@ -5,7 +5,7 @@ from flask_login import LoginManager
 
 
 app = Flask(__name__)
-app.config.from_pyfile('the-config.cfg')
+app.config.from_pyfile('config.cfg')
 
 
 db = MongoEngine(app)
