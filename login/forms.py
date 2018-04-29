@@ -1,7 +1,7 @@
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from flask_wtf import FlaskForm
-from ctip.models import User, db
+from login.models import User, db
 
 class RegistrationForm(FlaskForm):
     first_name = StringField('first_name', validators=[DataRequired()])
@@ -46,6 +46,6 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Reset Password')
+    submit = SubmitField('Request Password Reset')
     
  
