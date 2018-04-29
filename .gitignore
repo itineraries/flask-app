@@ -100,5 +100,6 @@ ENV/
 
 the-config.cfg
 
+set_environ.py
 Things to do.txt
 
