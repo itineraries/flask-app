@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{ document_title }}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://www.wecsam.com/styles/info-simple.css"
+		>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{ url_for('static', filename='app.css') }}"
+		>
+	</head>
+	<body>
+		<div>
+			<div class="home-link">
+				<a href="https://www.wecsam.com/">&#9668; Home</a>
+				<a href= "/login">Login</a>
+				<a href= "/register">Register</a>
+				<a href= "/logout"> Logout</a>
+				<a href= "/location"> Save Location </a>
+				<a href= "/view"> View Saved Locations </a>
+			</div>
+			<h1>
+				New York University<br>
+				Campus Transportation Itinerary Planner
+			</h1>
+			<h2>Itinerary Finder</h2>
+			<p>
+				Enter your trip information below and then click Find
+				Itinerary. You can enter street addresses for the origin and
+				destination or enter the names of bus stops. One can be a
+				street address while the other is the name of a bus stop.
+			</p>
+			<p>
+				<a href="/departures">Click here</a> to see just departures
+				from a given stop.
+			</p>
+			<form method="get" id="input">
+				<fieldset>
+					<legend>Trip Information</legend>
+					<fieldset id="fieldset_where">
+						<legend>Where</legend>
+						<div class="input-table">
+							<label>
+								<span>Origin</span>
+								<input 
+									name="orig"
+									id="text-orig"
+									type="text"
+									value="{{ origin|e }}"
+									list="stops"
+									autofocus
+								>
+							</label>
+							<label>
+								<span>Destination</span>
+								<input
+									name="dest"
+									id="text-dest"
+									type="text"
+									value="{{ destination|e }}"
+									list="stops"
+								>
+							</label>
+						</div>
+						<div id="place-footer" class="fieldset-footer"></div>
+					</fieldset>
+					<fieldset>
+						<legend>When</legend>
+						<label>
+							<input
+								type="radio"
+								name="depart"
+								value="1"
+								id="radio_depart_depart"{%
+								if depart
+								%}
+								checked{%
+								endif
+								%}
+							>
+							<span>Depart At</span>
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="depart"
+								value="0"
+								id="radio_depart_arrive"{%
+								if not depart
+								%}
+								checked{%
+								endif
+								%}
+							>
+							<span>Arrive By</span>
+						</label>
+						<span class="keep-together">
+							<select id="select_day" name="day">{%
+								for day, selected in weekdays_checked
+							%}
+								<option{% 
+									if selected
+								%} selected{%
+									endif
+								%}>{{ day }}</option>{%
+								endfor
+							%}
+							</select>
+							<input
+								type="time"
+								name="when"
+								id="time_when"
+								value="{{ when }}"
+							>
+						</span>
+						<span id="use-now"></span>
+					</fieldset>
+					<fieldset>
+						<legend>Walking</legend>
+						<div class="input-table">
+							<label>
+								<input
+									type="radio"
+									name="walking-max"
+									value="unlimited"{% 
+									if walking_max_mode == "unlimited"
+									%}
+									checked{%
+									endif
+									%}
+								>
+								<span>Unlimited walking</span>
+							</label>
+							<span>
+								<input
+									type="radio"
+									name="walking-max" 
+									id="radio_walking-max_custom"
+									value="custom"{% 
+									if walking_max_mode == "custom"
+									%}
+									checked{%
+									endif
+									%}
+								>
+								<span>
+									<label
+										for="radio_walking-max_custom"
+									>Limit to </label>
+									<label>
+										<input
+											name="walking-max-custom"
+											type="number"
+											min="1"
+											max="5258964960"
+											step="1"
+											value="{{ walking_max_custom|e }}"
+										> minutes at a time
+									</label>
+								</span>
+							</span>
+							<label>
+								<input
+									type="radio"
+									name="walking-max"
+									value="zero"{% 
+									if walking_max_mode == "zero"
+									%}
+									checked{%
+									endif
+									%}
+								>
+								<span>No walking</span>
+							</label>
+						</div>
+					</fieldset>
+					<div class="fieldset-footer">
+						<input type="submit" value="Find Itinerary">
+						or
+						<a href="{{ request.path }}">Reset</a>
+					</div>
+				</fieldset>
+				<datalist id="stops">{%
+					for stop in stops
+				%}
+					<option>{{ stop|e }}</option>{% 
+					endfor
+				%}
+				</datalist>
+			</form>
+			<div id="output">{{ output_escaped|safe }}</div>
+		</div>
+		<script
+			type="text/javascript"
+			src="{{ url_for('static', filename='app.min.js') }}"
+		></script>
+	</body>
+</html>
