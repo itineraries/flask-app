@@ -398,7 +398,7 @@ html, body {
 }
 
 .first-logout-image {
-    background-image: url("NYU White Bus - Driver.png");
+    background-image: url("/flask-app/ctip/static/NYU White Bus - Driver.png");
     background-repeat: no-repeat;
     
     display: block;
