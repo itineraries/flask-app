@@ -40,6 +40,16 @@
 				<a href="/departures">Click here</a> to see just departures
 				from a given stop.
 			</p>
+			{% with messages = get_flashed_messages() %}
+			 {% for message in messages %}
+			  {% if message %}
+			    <ul class=flashes>
+			      <li>{{ message }}</li>
+			    </ul>
+			  {% endif %}
+			  {% endfor %}
+			{% endwith %}
+
 			<form method="get" id="input">
 				<fieldset>
 					<legend>Trip Information</legend>
