@@ -162,20 +162,18 @@ def favicon():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        flash('You are already logged in', 'error')
         return redirect(url_for('root'))
     form = LoginForm()
     if request.method == 'POST' and form.validate_on_submit():
         user = User.objects(email=form.email.data).first()
         login_user(user, remember = form.remember_me.data)
-        flash('You are now logged in', 'info')
+        flash('You are now logged in')
         return redirect(url_for('root'))
     return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        flash('You are already logged in', 'error')
         return redirect(url_for('root'))
     form = RegistrationForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -198,7 +196,7 @@ def save_start():
 def save():
     location = request.args.get('location')
     loc_obj = Location(email = current_user.email, address = location).save()
-    flash("Location Saved", 'info')
+    flash("Location Saved")
     return redirect(url_for('view_saved_locations'))
 
 @login_required
@@ -217,7 +215,7 @@ def reset_password_request():
         print(user.email)
         if user:
             send_password_reset_email(user)
-            flash('Check your email for the instructions to reset your password', 'info')
+            flash('Check your email for the instructions to reset your password')
             return redirect(url_for('login'))
     return render_template('reset_password_request.html',
                            title='Reset Password', form=form)
@@ -232,7 +230,7 @@ def reset_password(token):
     if form.validate_on_submit():
         user.set_password(form.password.data)
         user.save()
-        flash('password changed successfully', 'info')
+        flash('password changed successfully')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
         
@@ -256,4 +254,5 @@ def confirm_email(token):
 @login_required
 def logout():
     logout_user()
-    return render_template('Logout.html')
+    flash("You are now logged out")
+    return redirect(url_for('root'))
