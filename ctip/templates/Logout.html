@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="NYU CTIP Logo - Purple.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="url_for('static', filename = 'NYU CTIP Logo - Purple.png') }}" type="image/gif" sizes="16x16">
     <title>Logout | NYU CTIP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
 	<div class="footer-two">
 		<p>&copy; 2017 New York University Campus Transportation Itinerary Planner</p>
 		<p>All Rights Reserved</p>
-		<img src="miny_wht_on_trans.gif" alt="Made in NY Logo" width="50" height="50">
+		<img src= "{{ url_for('static', filename='miny_wht_on_trans.gif') }}" alt="Made in NY Logo" width="50" height="50">
 	</div>
 </body>
 </html>
