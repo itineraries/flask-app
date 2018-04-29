@@ -11,4 +11,5 @@ After this look at the variables in config.cfg and create environment variables 
 
 The master branch is a local version of the code, the deploy branch is one that has specifically been configured to deploy on an azure webserver.
 
-The application should then be ready to deploy.
+The application should then be ready to deploy
+
