@@ -398,7 +398,7 @@ html, body {
 }
 
 .first-logout-image {
-    background-image: "{{ url_for(filename='NYU White Bus - Driver.png') }}";
+    background-image: "{{ url_for('static', filename='NYU White Bus - Driver.png') }}";
     background-repeat: no-repeat;
     
     display: block;
