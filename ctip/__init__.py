@@ -12,6 +12,6 @@ db = MongoEngine(app)
 mail = Mail(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-from login import routes, models
+from ctip import routes, models
 
 
