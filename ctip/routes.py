@@ -159,33 +159,39 @@ def favicon():
     )
 
 
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
+        flash('You are already logged in', 'error')
         return redirect(url_for('root'))
-    form = LoginForm()
-    if request.method == 'POST' and form.validate_on_submit():
-        user = User.objects(email=form.email.data).first()
-        login_user(user, remember = form.remember_me.data)
-        flash('You are now logged in')
+    form_login = LoginForm()
+    form_register = RegistrationForm()
+    if request.method == 'POST' and form_login.validate_on_submit():
+        user = User.objects(email=form_login.email.data).first()
+        login_user(user, remember = form_login.remember_me.data)
+        flash('You are now logged in', 'info')
         return redirect(url_for('root'))
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('Register-or-Login.html', title='Sign In', form_l=form_login, form_r = form_register)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
+        flash('You are already logged in', 'error')
         return redirect(url_for('root'))
-    form = RegistrationForm()
-    if request.method == 'POST' and form.validate_on_submit():
-        user = User(email=form.email.data, first_name = form.first_name.data,\
-                    last_name=form.last_name.data, confirmed = False) ##should I sanatize input? also does case matter
+    form_login = LoginForm()
+    form_register = RegistrationForm()
+    if request.method == 'POST' and form_register.validate_on_submit():
+        user = User(email=form_register.email.data, first_name = form_register.first_name.data,\
+                    last_name=form_register.last_name.data, confirmed = False) ##should I sanatize input? also does case matter
         #do we want a min password length
-        user.set_password(form.password.data)
+        user.set_password(form_register.password.data)
         user.save()
         token = user.get_confirmation_token()
         login_user(user)
         return redirect(url_for('root'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('Register-or-Login.html', title='Register', form_l=form_login, form_r = form_register)
 
 @app.route('/location')
 @login_required
@@ -196,14 +202,24 @@ def save_start():
 def save():
     location = request.args.get('location')
     loc_obj = Location(email = current_user.email, address = location).save()
-    flash("Location Saved")
+    flash("Location Saved", 'info')
     return redirect(url_for('view_saved_locations'))
 
-@login_required
-@app.route('/view') 
+@app.route('/view')
+@login_required 
 def view_saved_locations():
         saved_places = Location.objects(email = current_user.email)
-        return render_template('view_locations.html', locations = saved_places)
+        return render_template('Account.html', locations = saved_places)
+
+@app.route('/delete_fav', methods=['GET', 'POST'])
+@login_required
+def remove_fav():
+    location = request.args.get('location')
+    loc_obj = Location.objects(email = current_user.email, address = location).first()
+    loc_obj.delete()
+    flash("Location Saved", 'info')
+    return redirect(url_for('view_saved_locations'))
+
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
@@ -215,9 +231,9 @@ def reset_password_request():
         print(user.email)
         if user:
             send_password_reset_email(user)
-            flash('Check your email for the instructions to reset your password')
+            flash('Check your email for the instructions to reset your password', 'info')
             return redirect(url_for('login'))
-    return render_template('reset_password_request.html',
+    return render_template('Request-Password-Reset.html',
                            title='Reset Password', form=form)
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -230,9 +246,9 @@ def reset_password(token):
     if form.validate_on_submit():
         user.set_password(form.password.data)
         user.save()
-        flash('password changed successfully')
+        flash('password changed successfully', 'info')
         return redirect(url_for('login'))
-    return render_template('reset_password.html', form=form)
+    return render_template('Reset-Password.html', form=form)
         
 ##NOT DONE YET THIS WONT DO ANYTHING
 @app.route('/confirm/<token>')
@@ -254,5 +270,4 @@ def confirm_email(token):
 @login_required
 def logout():
     logout_user()
-    flash("You are now logged out")
-    return redirect(url_for('root'))
+    return render_template('Logout.html')
