@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" href="{{url_for('static', filename = 'NYU_CTIP_Logo-Purple.png') }}"  type="image/gif" sizes="16x16">
+    <title>Account | NYU CTIP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+		rel="stylesheet"
+		type="text/css"
+		href="{{ url_for('static', filename='style.css') }}"
+	>
+</head>
+<body>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li class="dropdown">
+			<a href="javascript:void(0)" class="dropbtn">About</a>
+			<div class="dropdown-content">
+				<a href="#">Introduction</a>
+				<a href="#">Team</a>
+			</div>
+		</li>
+		<li><a href="/contact">Contact</a></li>
+		<li style="float:right"><a class="active" href="">Register / Login</a></li>
+	</ul>
+	<div class="first-account-image">
+		<div class="first-account-image-form">
+			<h1 align="center"><i>Account</i></h1>
+			<hr>
+			<h2 align="center">Welcome back!</h2>
+			<p align="center">You can view your favorites here.</p>
+			<hr>
+			<h2 align="center">Favorites</h2>
+			<table>
+			<tbody>
+				{% for place in locations %}
+					<tr>
+		    		<td><p> {{place.address}} </p></td>
+		    		<form action="/delete_fav" method="get">
+		    			<td><button type = "Submit" value = "{{place.address}}" name="location"> Delete </button></td>
+		    		</form>
+		    		</tr>
+		  		{% endfor %}
+		  	</tbody>
+		  	</table>
+		</div>
+	</div>
+	<div class="footer-one">
+		<div class="main-container">
+			<div class="fixer-container">
+				<ul>
+					<li><a href="/terms-of-use">Terms of Use</a></li>
+					<li><a href="/privacy-policy">Privacy Policy</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-two">
+		<p>&copy; 2017 New York University Campus Transportation Itinerary Planner</p>
+		<p>All Rights Reserved</p>
+		<img src="{{ url_for('static', filename='miny_wht_on_trans.gif') }}" alt="Made in NY Logo" width="50" height="50">
+	</div>
+</body>
+</html>

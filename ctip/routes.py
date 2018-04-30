@@ -205,11 +205,21 @@ def save():
     flash("Location Saved", 'info')
     return redirect(url_for('view_saved_locations'))
 
-@login_required
-@app.route('/view') 
+@app.route('/view')
+@login_required 
 def view_saved_locations():
         saved_places = Location.objects(email = current_user.email)
-        return render_template('view_locations.html', locations = saved_places)
+        return render_template('Account.html', locations = saved_places)
+
+@app.route('/delete_fav', methods=['GET', 'POST'])
+@login_required
+def remove_fav():
+    location = request.args.get('location')
+    loc_obj = Location.objects(email = current_user.email, address = location).first()
+    loc_obj.delete()
+    flash("Location Saved", 'info')
+    return redirect(url_for('view_saved_locations'))
+
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
