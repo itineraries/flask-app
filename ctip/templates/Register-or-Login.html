@@ -76,6 +76,7 @@
 	            {% for error in form_l.password.errors %}
 	            	<span style="color: red;">[{{ error }}]</span>
 	            {% endfor %}
+	            <p>{{ form_l.remember_me() }} {{ form_l.remember_me.label }}</p>
 
 	            <div class="main-container">
 					<div class="fixer-container">
