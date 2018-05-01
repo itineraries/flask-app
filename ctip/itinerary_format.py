@@ -46,6 +46,7 @@ def days_hours_minutes_string(td):
     minutes.
     '''
     days, hours, minutes = days_hours_minutes(td)
+    minutes = round(minutes)
     result = []
     if days:
         if days == 1:
@@ -61,7 +62,7 @@ def days_hours_minutes_string(td):
         if minutes == 1:
             result.append("1 minute")
         else:
-            result.append("{:.0f} minutes".format(minutes))
+            result.append("{} minutes".format(minutes))
     if result:
         if len(result) == 1:
             return result[0]
