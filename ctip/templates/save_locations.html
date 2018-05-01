@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <title>Sam's simple app</title>
-</head>
-
-<body>
-
-  <form action="/save" method="GET">
-      <div class = "form-group">
-        <label for="location">Locations:</label>
-        <input type="text" name="location" class= "form-control" placeholder = " Enter location" id= "location">
-      </div>
-
-    <input type="submit" value="save" class="btn btn-primary">
-  </form>
-  {% if error %}
-    <p> Error: {{error}} </p>
-  {%endif%}
-  <a href= "/view"> View Saved Locations </a>
-  <a href="/">Home</a>
-
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<title>Save Location</title>
+	</head>
+	<body>
+		<form action="/save" method="GET">
+			<div class="form-group">
+				<label for="location">Locations:</label>
+				<input type="text" name="location" class="form-control" placeholder="Enter location" id="location">
+			</div>
+			<input type="submit" value="save" class="btn btn-primary">
+		</form>
+		{% if error %}
+		<p> Error: {{error}} </p>
+		{% endif %}
+		<a href= "/view"> View Saved Locations </a>
+		<a href="/">Home</a>
+	</body>
 </html>

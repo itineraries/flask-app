@@ -58,26 +58,6 @@
 					</div>
 					<h1>When</h1>
 					<div class="form-sentence">
-<!-- 						<label class="container">
-							<input type="radio" name="depart" value="1" id="radio_depart_depart" {%
-								if depart
-								%}
-								checked{%
-								endif
-								%}>
-							<span class="checkmark"></span>
-							<span>Depart at</span>
-						</label>
-						<label class="container">
-							<input type="radio" name="depart" value="0" id="radio_depart_arrive"{%
-								if not depart
-								%}
-								checked{%
-								endif
-								%}>
-							<span class="checkmark"></span>
-							<span>Arrive by</span>
-						</label> -->
 						<div class="form-sentence-word">
 							<div class="custom-select">
 								<select id="select_day" name="day">
@@ -106,20 +86,18 @@
 					</div>
 				</form>
 			</div>
-			<div class="first-departures-image-form-two form-container">
-				<h1 align="center">Note</h1>
-				<hr>
-				<p>Please note that the image is static and does not display your route.</p>
-				<hr>
-				<p>Not what you were looking for? Click the button below to go back to the <i>Itinerary Finder</i>.</p>
-				<div class="form-actions">
-					<a href="/" class="link-button">Itinerary Finder</a>
-
+		</div>
+		<div class="first-departures-image-form-two form-container">
+			<h1 align="center">Note</h1>
+			<hr>
+			<p>Please note that the image is static and does not display your route.</p>
+			<hr>
+			<p>Not what you were looking for? Click the button below to go back to the <i>Itinerary Finder</i>.</p>
+			<div class="form-actions">
+				<a href="/" class="link-button">Itinerary Finder</a>
 			</div>
 		</div>
-		<div id="output">
-			{{ output_escaped|safe }}
-		</div>
+		<div id="output">{{ output_escaped|safe }}</div>
 		<div class="footer-one">
 			<div class="main-container">
 				<div class="fixer-container">

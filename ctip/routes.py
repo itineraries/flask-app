@@ -80,7 +80,7 @@ def root():
             )
             if markup_itineraries:
                 output_escaped = "\n" \
-                    "\t\t\t\t<p>Itineraries:</p>\n" \
+                    "\t\t\t\t<h1>Itineraries</h1>\n" \
                     "\t\t\t\t<ol>\n" + \
                     markup_itineraries + \
                     "\t\t\t\t</ol>\n" \
@@ -147,8 +147,8 @@ def departures():
         # Put the list to the output to the user.
         if markup_departures:
             output_escaped = \
-                "\n\t\t\t\t<p>Departures:</p>\n\t\t\t\t<ul>\n" + markup_departures + \
-                "\t\t\t\t</ul>\n\t\t\t"
+                "\n\t\t\t\t<h1>Departures</h1>\n\t\t\t\t<ul>\n" + \
+                markup_departures + "\t\t\t\t</ul>\n\t\t\t"
         else:
             output_escaped = \
                 "\n\t\t\t\t<p>There are no departures from " \
