@@ -12,6 +12,11 @@ import cgi, datetime, dateutil.parser, os.path, pytz, sys
 @app.route("/")
 def root():
     # Read the parameters.
+    if request.args.get("save_loc_orig") is not None:
+        save(request.args["orig"].strip())
+    if request.args.get("save_loc_dest") is not None:
+        save(request.args["dest"].strip())
+
     try:
         origin = request.args["orig"].strip()
         destination = request.args["dest"].strip()
@@ -88,6 +93,22 @@ def root():
                     "destination.</p>\n\t\t\t"
     else:
         output_escaped = ""
+    if current_user.is_authenticated:
+        faves = Location.objects(email = current_user.email)
+        return render_template(
+            "index.html",
+            document_title=document_title,
+            origin=origin,
+            destination=destination,
+            stops=stops.names_sorted,
+            depart=depart,
+            weekdays_checked=weekdays_checked,
+            when=datetime_trip.strftime("%H:%M"),
+            walking_max_mode=walking_max_mode,
+            walking_max_custom=walking_max_custom,
+            output_escaped=output_escaped,
+            faves = faves
+        )
     # Reflect the parameters back to the user and send the itinerary.
     return render_template(
         "index.html",
@@ -197,11 +218,11 @@ def register():
 @login_required
 def save_start():
     return render_template('save_locations.html')
-@app.route('/save')
+
+
 @login_required
-def save():
-    location = request.args.get('location')
-    loc_obj = Location(email = current_user.email, address = location).save()
+def save(loc):
+    loc_obj = Location(email = current_user.email, address = loc).save()
     flash("Location Saved", 'info')
     return redirect(url_for('view_saved_locations'))
 

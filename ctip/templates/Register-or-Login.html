@@ -12,22 +12,24 @@
 	>
 </head>
 <body>
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li class="dropdown">
-			<a href="javascript:void(0)" class="dropbtn">About</a>
-			<div class="dropdown-content">
-				<a href="#">Introduction</a>
-				<a href="#">Team</a>
-			</div>
-		</li>
-		<li><a href="/contact">Contact</a></li>
-		{% if current_user.is_authenticated %}
-			<li style="float:right"><a class="active" href="/Logout">Logout</a></li>
-		{% else %}
-			<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
-		{% endif %}
-	</ul>
+		<ul class="navbar">
+			<li><a href="/">Home</a></li>
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn">About</a>
+				<div class="dropdown-content">
+					<a href="#">Introduction</a>
+					<a href="#">Team</a>
+				</div>
+			</li>
+			<li><a href="/contact">Contact</a></li>
+			<li><a href="/view">View Saved Locations</a></li>
+			<li><a href="/departures">Departure List</a></li>
+			{% if current_user.is_authenticated %}
+				<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+			{% else %}
+				<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
+			{% endif %}		
+		</ul>
 	<div class="first-login-image">
 		<div class="first-login-image-form-one">
 			<center><h1><i>Register</i></h1></center>

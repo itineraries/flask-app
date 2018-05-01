@@ -1,217 +1,185 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>{{ document_title }}</title>
-		<meta charset="UTF-8">
+		<link rel="icon" href="{{url_for('static', filename = 'NYU_CTIP_Logo-Purple.png') }}" sizes="16x16">
+		<title>Index | NYU CTIP</title>
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="https://www.wecsam.com/styles/info-simple.css"
-		>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="{{ url_for('static', filename='app.css') }}"
-		>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+		rel="stylesheet"
+		type="text/css"
+		href="{{ url_for('static', filename='style.css') }}"
+	>
 	</head>
 	<body>
-		<div>
-			<div class="home-link">
-				<a href="https://www.wecsam.com/">&#9668; Home</a>
-				{% if not current_user.is_authenticated %}
-				<a href= "/login">Login</a>
-				<a href= "/register">Register</a>
-				{% else %}
-				<a href= "/logout"> Logout</a>
-				{% endif %}
-				<a href= "/location"> Save Location </a>
-				<a href= "/view"> View Saved Locations </a>
+		<ul class="navbar">
+			<li><a href="/">Home</a></li>
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn">About</a>
+				<div class="dropdown-content">
+					<a href="#">Introduction</a>
+					<a href="#">Team</a>
+				</div>
+			</li>
+			<li><a href="/contact">Contact</a></li>
+			<li><a href="/view">View Saved Locations</a></li>
+			<li><a href="/departures">Departure List</a></li>
+			{% if current_user.is_authenticated %}
+				<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+			{% else %}
+				<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
+			{% endif %}		
+		</ul>
+		<div class="first-home-image">
+			<div class="first-home-image-text">
+				<h1>New York University Campus Transportation Itinerary Planner</h1>
+				<h2><i>Your destination to navigating NYU</i></h2>
+				<button class="button" style="vertical-align:middle"><span><a href="#second-home-image">Try Now </a></span></button>
 			</div>
-			<h1>
-				New York University<br>
-				Campus Transportation Itinerary Planner
-			</h1>
-			<h2>Itinerary Finder</h2>
-			<p>
-				Enter your trip information below and then click Find
-				Itinerary. You can enter street addresses for the origin and
-				destination or enter the names of bus stops. One can be a
-				street address while the other is the name of a bus stop.
-			</p>
-			<p>
-				<a href="/departures">Click here</a> to see just departures
-				from a given stop.
-			</p>
-			{% with messages = get_flashed_messages() %}
-			 {% for message in messages %}
-			  {% if message %}
-			    <ul class=flashes>
-			      <li>{{ message }}</li>
-			    </ul>
-			  {% endif %}
-			  {% endfor %}
-			{% endwith %}
-
-			<form method="get" id="input">
-				<fieldset>
-					<legend>Trip Information</legend>
-					<fieldset id="fieldset_where">
-						<legend>Where</legend>
-						<div class="input-table">
-							<label>
-								<span>Origin</span>
-								<input 
-									name="orig"
-									id="text-orig"
-									type="text"
-									value="{{ origin|e }}"
-									list="stops"
-									autofocus
-								>
-							</label>
-							<label>
-								<span>Destination</span>
-								<input
-									name="dest"
-									id="text-dest"
-									type="text"
-									value="{{ destination|e }}"
-									list="stops"
-								>
-							</label>
-						</div>
-						<div id="place-footer" class="fieldset-footer"></div>
-					</fieldset>
-					<fieldset>
-						<legend>When</legend>
+		</div>
+		<div id="second-home-image" class="second-home-image form-section">
+			<div class="second-home-image-form form-container">
+				<p>Enter your trip information below and then click or press <i>Find Itinerary</i>.</p>
+				<form action="#output" method="get">
+					<h1>Where</h1>
+					<div class="form-table">
 						<label>
-							<input
-								type="radio"
-								name="depart"
-								value="1"
-								id="radio_depart_depart"{%
+							<span>Origin</span>
+							<div>
+								<input name="orig" id="text-orig" type="text" value="{{ origin|e }}" list="stops">
+			    					<button type = "Submit" name="save_loc_orig"> Favorite </button>
+							</div>
+						</label>
+						<label>
+							<span>Destination</span>
+							<div>
+								<input name="dest" id="text-dest" type="text" value="{{ destination|e }}" list="stops">
+								<button type = "Submit" name="save_loc_dest"> Favorite </button>
+							</div>
+						</label>
+					</div>
+					<div id="place-footer" class="form-actions"><!--
+						The buttons are added by JavaScript.
+					--></div>
+					<h1>When</h1>
+					<div class="form-sentence">
+						<label class="container">
+							<input type="radio" name="depart" value="1" id="radio_depart_depart" {%
 								if depart
 								%}
 								checked{%
 								endif
-								%}
-							>
-							<span>Depart At</span>
+								%}>
+							<span class="checkmark"></span>
+							<span>Depart at</span>
 						</label>
-						<label>
-							<input
-								type="radio"
-								name="depart"
-								value="0"
-								id="radio_depart_arrive"{%
+						<label class="container">
+							<input type="radio" name="depart" value="0" id="radio_depart_arrive"{%
 								if not depart
 								%}
 								checked{%
 								endif
-								%}
-							>
-							<span>Arrive By</span>
+								%}>
+							<span class="checkmark"></span>
+							<span>Arrive by</span>
 						</label>
-						<span class="keep-together">
-							<select id="select_day" name="day">{%
-								for day, selected in weekdays_checked
-							%}
-								<option{% 
-									if selected
-								%} selected{%
-									endif
-								%}>{{ day }}</option>{%
-								endfor
-							%}
-							</select>
-							<input
-								type="time"
-								name="when"
-								id="time_when"
-								value="{{ when }}"
-							>
-						</span>
-						<span id="use-now"></span>
-					</fieldset>
-					<fieldset>
-						<legend>Walking</legend>
-						<div class="input-table">
-							<label>
-								<input
-									type="radio"
-									name="walking-max"
-									value="unlimited"{% 
-									if walking_max_mode == "unlimited"
-									%}
-									checked{%
-									endif
-									%}
-								>
-								<span>Unlimited walking</span>
+						<div class="form-sentence-word">
+							<div class="custom-select">
+								<select id="select_day" name="day">
+								{% for day, selected in weekdays_checked %}
+									<option{% if selected %} 
+									selected
+									{% endif %}>{{ day }}</option>
+								{% endfor %}
+								
+								</select>
+							</div>
+							<input type="time" name="when" id="time_when" value="{{ when }}">
+							<div id="use-now"><!--
+								The button is added by JavaScript.
+							--></div>
+						</div>
+					</div>
+					<h1>Walking</h1>
+					<div class="form-table">
+						<div>
+							<label class="container">
+								<input type="radio" name="walking-max" id="radio_walking-max_unlimited" value="unlimited" 
+								{%  if walking_max_mode == "unlimited" %}
+								checked{% endif %}>
+								<span class="checkmark"></span>
 							</label>
-							<span>
-								<input
-									type="radio"
-									name="walking-max" 
-									id="radio_walking-max_custom"
-									value="custom"{% 
+							<label for="radio_walking-max_unlimited">Unlimited walking</label>
+						</div>
+						<div>
+							<label class="container">
+								<input type="radio" name="walking-max" id="radio_walking-max_custom" value="custom" {% 
 									if walking_max_mode == "custom"
 									%}
 									checked{%
-									endif
-									%}
-								>
-								<span>
-									<label
-										for="radio_walking-max_custom"
-									>Limit to </label>
-									<label>
-										<input
-											name="walking-max-custom"
-											type="number"
-											min="1"
-											max="5258964960"
-											step="1"
-											value="{{ walking_max_custom|e }}"
-										> minutes at a time
-									</label>
-								</span>
+									endif %}>
+								<span class="checkmark"></span>
+							</label>
+							<span>
+								<label for="radio_walking-max_custom">Limit to</label>
+								<label>
+									<input name="walking-max-custom" type="number" min="1" max="5258964960" step="1" value="{{ walking_max_custom|e }}">
+									minutes at a time
+								</label>
 							</span>
-							<label>
-								<input
-									type="radio"
-									name="walking-max"
-									value="zero"{% 
+						</div>
+						<div>
+							<label class="container">
+								<input type="radio" name="walking-max" id="radio_walking-max_zero" value="zero"{% 
 									if walking_max_mode == "zero"
 									%}
 									checked{%
 									endif
-									%}
-								>
-								<span>No walking</span>
+									%}>
+								<span class="checkmark"></span>
 							</label>
+							<label for="radio_walking-max_zero">No walking</label>
 						</div>
-					</fieldset>
-					<div class="fieldset-footer">
+					</div>
+
+					<div class="form-actions">
 						<input type="submit" value="Find Itinerary">
 						or
-						<a href="{{ request.path }}">Reset</a>
+						<a href="{{ request.path }}" class="link-button">Reset</a>
 					</div>
-				</fieldset>
-				<datalist id="stops">{%
-					for stop in stops
-				%}
-					<option>{{ stop|e }}</option>{% 
-					endfor
-				%}
-				</datalist>
-			</form>
+					<datalist id="stops">
+						{%for stop in stops %}
+						<option>{{ stop|e }}</option>
+						{% endfor %}
+						{% if faves %}
+						{%for fav in faves %}
+						<option>{{ fav.address|e }}</option>
+						{% endfor %}
+						{% endif %}
+					</datalist>
+				</form>
+			</div>
+		</div>
+		<div id="output">
 			<div id="output">{{ output_escaped|safe }}</div>
 		</div>
-		<script
-			type="text/javascript"
-			src="{{ url_for('static', filename='app.min.js') }}"
-		></script>
+		<div class="footer-one">
+			<div class="main-container">
+				<div class="fixer-container">
+					<ul>
+						<li><a href="/terms-of-use">Terms of Use</a></li>
+						<li><a href="/privacy-policy">Privacy Policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-two">
+			<p>&copy; 2017 New York University Campus Transportation Itinerary Planner</p>
+			<p>All Rights Reserved</p>
+			<img src="{{ url_for('static', filename='miny_wht_on_trans.gif') }}" alt="Made in NY Logo" width="50" height="50">
+		</div>
+		<script type="text/javascript" src="{{ url_for('static', filename='custom-select.min.js')}}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='app.min.js') }}"></script>
 	</body>
 </html>

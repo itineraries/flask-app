@@ -11,7 +11,7 @@ function padLeft(str, length, padChar){
 }
 window.addEventListener("load", function(){
 	var inputOrigin, inputDestination, btnUseGeolocation, btnSwitchOrigDest,
-		btnNow,
+		btnNow, selectDay, inputTimeWhen,
 		divPlaceFooter = document.getElementById("place-footer"),
 		divUseNow = document.getElementById("use-now"),
 		locationCallback = function(position){
@@ -48,20 +48,39 @@ window.addEventListener("load", function(){
 		}
 	}
 	if(divUseNow){
-		// This button sets the "day" field to the current of the week and the
-		// "when" field to the current time.
-		btnNow = document.createElement("button");
-		btnNow.textContent = "Now";
-		btnNow.addEventListener("click", function(event){
-			event.preventDefault();
-			var now = new Date(),
-			select_day = document.getElementById("select_day"),
-				time_when = document.getElementById("time_when");
-			select_day.children[now.getDay()].selected = true;
-			time_when.value =
-				padLeft(now.getHours().toString(), 2, '0') + ':' +
-				padLeft(now.getMinutes().toString(), 2, '0');
-		});
-		divUseNow.appendChild(btnNow);
+		selectDay = document.getElementById("select_day");
+		inputTimeWhen = document.getElementById("time_when");
+		if(selectDay && inputTimeWhen){
+			// This button sets the "day" field to the current of the week and
+			// the "when" field to the current time.
+			btnNow = document.createElement("button");
+			btnNow.textContent = "Now";
+			btnNow.addEventListener("click", function(event){
+				event.preventDefault();
+				var i,
+					now = new Date(),
+					divsCustomSelect = 
+						selectDay.parentElement.
+						getElementsByClassName("select-items");
+				// If custom-select.js has replaced the select element, update
+				// its replacement. Otherwise, select the day of the week in
+				// the select element.
+				if(divsCustomSelect){
+					divsCustomSelect[0].children[
+						Math.min(
+							now.getDay(),
+							divsCustomSelect[0].children.length - 1
+						)
+					].click()
+				}else{
+					select_day.children[now.getDay()].selected = true;
+				}
+				// Set the value of the input[type=time] element.
+				time_when.value =
+					padLeft(now.getHours().toString(), 2, '0') + ':' +
+					padLeft(now.getMinutes().toString(), 2, '0');
+			});
+			divUseNow.appendChild(btnNow);
+		}
 	}
 });

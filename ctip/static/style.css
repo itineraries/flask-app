@@ -1,33 +1,33 @@
-h1, h2, p, ul, button, input, label, .custom-select, .footer-one, .footer-two {
-	font-family: "Avenir", "Segoe UI", Arial, sans-serif;
+h1, h2, p, ul, ol, button, input, label, .custom-select, .footer-one, .footer-two, .link-button {
+    font-family: "Avenir", "Segoe UI", Arial, sans-serif;
 }
 
 h1 {
-	font-size: 10vw;
+    font-size: 10vw;
 }
 
 h2 {
-	font-size: 3vw;
+    font-size: 3vw;
 }
 p {
-	font-size: 2vw;
+    font-size: 2vw;
 }
 
-ul {
+.navbar, .footer-one ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #583285;
-
+    
     font-size: 2vw;
 }
 
-li {
+.navbar li, .footer-one li {
     float: left;
 }
 
-li a, .dropbtn {
+.navbar li a, .footer-one li a, .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
@@ -35,11 +35,11 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li a:hover:not(.active), .dropdown:hover .dropbtn {
+.navbar li a:hover:not(.active), .footer-one li a:hover:not(.active), .dropdown:hover .dropbtn {
     background-color: #280038;
 }
 
-li.dropdown {
+.navbar li.dropdown {
     display: inline-block;
 }
 
@@ -81,25 +81,25 @@ html, body {
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
     height: 100%;
-
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
-
+    
     background-position: contain;
     position: relative;
 }
@@ -107,25 +107,25 @@ html, body {
 .first-home-image-text {
     line-height: 0.8;
     text-align: center;
-
+    
     position: absolute;
     top: 42%;
     left: 3.6%;
-
+    
     color: white;
 }
 
 .first-home-image-text h1 {
-	font-size: 3.2vw;
+    font-size: 3.2vw;
 }
 
 .first-home-image-text h2 {
-	font-size: 1.6vw;
+    font-size: 1.6vw;
 }
 
 .first-home-image-text a {
-	color: #000000;
-	text-decoration: none;
+    color: #000000;
+    text-decoration: none;
 }
 
 .first-home-image-text button {
@@ -168,178 +168,177 @@ html, body {
     right: 0;
 }
 
-.second-home-image {
+.second-home-image, .first-departures-image {
     background-image: url("Data_ABCEFG_on_Map.png");
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
-    height: 100%;
-
+    min-height: 100%;
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
-
+    
     background-position: contain;
     position: relative;
+    transition: 0.5s;
 }
 
-.second-home-image-form {
-    position: absolute;
-    top: 1%;
-    left: 3%;
-
-    border-radius: 25px;
-    padding: 25px;
-
-    width: 48vw;
-    height: 91vh;
-
-    background: #FFFFFF;
-    opacity: 0.8;
+.form-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 35px;
+	margin: 0 0 10px;
+    width: auto;
+    transition: 0.5s;
+	display: inline-block;
 }
 
-.second-home-image-form p {
-    font-size: 1.5vw;
+@media screen and (min-width: 780px) {
+    .second-home-image, .first-departures-image {
+        padding: 10px;
+    }
+    .form-container {
+        padding: 25px;
+        border-radius: 25px;
+        width: 700px;
+    }
 }
 
-.second-home-image-form h1 {
-    font-size: 1.5vw;
+@media screen and (min-width: 790px) {
+    .form-container {
+		margin-right: 10px;
+	}
+}
+
+.form-container * {
+    font-size: 14pt;
+}
+
+.form-container h1 {
+    border-top: 1px inset;
+    padding-top: 12px;
+    font-size: 16pt;
     margin-top: 6px;
     margin-bottom: 6px;
-    float: middle;
+    text-align: center;
+    font-style: italic;
 }
 
-.second-home-image-form label {
-    font-size: 1.7vw;
-	padding: 12px 12px 12px 0;
-    display: inline-block;
-}
-
-.col-7 {
-    float: left;
-    width: 7%;
-    margin-top: 6px;
-}
-
-.col-18 {
-    float: left;
-    width: 18%;
-    margin-top: 6px;
-}
-
-.col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-}
-
-.col-50 {
-    float: left;
-    width: 50%;
-    margin-top: 6px;
-}
-
-.col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-}
-
-.col-87 {
-    float: left;
-    width: 87%;
-    margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
+.form-table {
     display: table;
-    clear: both;
+}
+
+.form-table > * {
+    display: table-row;
+}
+
+.form-table > * > * {
+    display: table-cell;
+    padding: 0 4px;
+}
+
+.form-table > * > :first-child {
+    padding-left: 0;
+}
+
+.form-table > * > :last-child, .form-table > * > :last-child > * {
+    width: 100%;
+    padding-right: 0;
+}
+
+.form-actions {
+    text-align: right;
+    margin-right: -4px;
+}
+
+.form-sentence {
+    display: block;
+}
+
+.form-sentence > *, .form-sentence-word {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.form-sentence-word > * {
+    display: inline-block;
 }
 
 /*the container must be positioned relative:*/
 .custom-select {
-	position: relative;
-	font-size: 1.5vw;
+    position: relative;
 }
 .custom-select select {
-	display: none; /*hide original SELECT element:*/
+    display: none; /*hide original SELECT element:*/
 }
 .select-selected {
-	background-color: #FFFFFF;
-	opacity: 0.8;
+    background-color: #FFFFFF;
+    opacity: 0.8;
 }
 /*style the arrow inside the select element:*/
 .select-selected:after {
-	position: absolute;
-	content: "";
-	top: 20px;
-	right: 10px;
-	width: 0;
-	height: 0;
-	border: 6px solid transparent;
-	border-color: #000000 transparent transparent transparent;
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #000000 transparent transparent transparent;
 }
 /*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
-	border-color: transparent transparent #000000 transparent;
-	top: 10px;
+    border-color: transparent transparent #000000 transparent;
+    margin-top: -8px;
 }
 /*style the items (options), including the selected item:*/
 .select-items div {
-	padding: 8px 16px;
-	border: 1px solid transparent;
-	border-color: #333;
-	cursor: pointer;
-	user-select: none;
-	color: #FFFFFF;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: #333;
+    cursor: pointer;
+    user-select: none;
+    color: #FFFFFF;
 }
 /*style the items (options), including the selected item:*/
 .select-selected {
-	padding: 8px 16px;
-	border: 1px solid transparent;
-	border-color: #333;
-	cursor: pointer;
-	user-select: none;
-	color: black;
+    cursor: pointer;
+    user-select: none;
+    color: black;
 }
 /*style items (options):*/
 .select-items {
-	position: absolute;
-	background-color: #333;
-	top: 100%;
-	left: 0;
-	right: 0;
-	z-index: 99;
+    position: absolute;
+    background-color: #333;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
 }
 /*hide the items when the select box is closed:*/
 .select-hide {
-	display: none;
+    display: none;
 }
 .select-items div:hover, .same-as-selected {
-	background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-.second-home-image-form button, .second-home-image-form input[type=submit] {
-	font-size: 1.5vw;
-
-	float: right;
-	background-color: #333;
-
+.form-container button, .form-container input[type=submit], .form-container .link-button {
+    background-color: #333;
+    
     border: none;
     color: white;
     padding: 8px 16px;
@@ -352,11 +351,9 @@ html, body {
 
 /* The container */
 .container {
-    display: block;
     position: relative;
     margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
+    min-width: 25px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -364,19 +361,26 @@ html, body {
 }
 
 /* Hide the browser's default radio button */
-.container input {
-    position: absolute;
-    opacity: 0;
+.container > input {
+    display: none;
+}
+
+.container, .container + label, .container > .checkmark + *, .container + span > label {
     cursor: pointer;
+}
+
+.container > .checkmark + * {
+    margin-left: 32px;
 }
 
 /* Create a custom radio button */
 .checkmark {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     height: 25px;
     width: 25px;
+    margin-top: -13px;
     background-color: #333;
     border-radius: 50%;
 }
@@ -384,11 +388,6 @@ html, body {
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
     background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
-    background-color: #333;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -405,12 +404,23 @@ html, body {
 
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
- 	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
+     top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.first-departures-image-form-two {
+	width: auto;
+	max-width: 300px;
+}
+
+.first-departures-image-form-two label {
+    font-size: 1.7vw;
+    padding: 12px 12px 12px 0;
+    display: inline-block;
 }
 
 .first-login-image {
@@ -418,25 +428,25 @@ html, body {
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
     height: 100%;
-
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
-
+    
     background-position: contain;
     position: relative;
 }
@@ -445,13 +455,13 @@ html, body {
     position: absolute;
     top: 1%;
     left: 3%;
-
+    
     border-radius: 25px;
     padding: 25px;
-
+    
     width: 40vw;
     height: 91vh;
-
+    
     background: #FFFFFF;
     opacity: 0.9;
 }
@@ -468,11 +478,11 @@ html, body {
 }
 
 .first-login-image-form-one button , .first-login-image-form-one input[type=submit] {
-	font-size: 1.5vw;
-
-	float: right;
-	background-color: #333;
-
+    font-size: 1.5vw;
+    
+    float: right;
+    background-color: #333;
+    
     border: none;
     color: white;
     padding: 8px 16px;
@@ -487,13 +497,13 @@ html, body {
     position: absolute;
     top: 1%;
     right: 3%;
-
+    
     border-radius: 25px;
     padding: 25px;
-
+    
     width: 40vw;
     height: 91vh;
-
+    
     background: #FFFFFF;
     opacity: 0.9;
 }
@@ -503,12 +513,12 @@ html, body {
 }
 
 .first-login-image-form-two a {
-	color: black;
-	text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 .first-login-image-form-two a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .first-login-image-form-two h1 {
@@ -519,11 +529,11 @@ html, body {
 }
 
 .first-login-image-form-two button, .first-login-image-form-two input[type=submit] {
-	font-size: 1.5vw;
-
-	float: right;
-	background-color: #333;
-
+    font-size: 1.5vw;
+    
+    float: right;
+    background-color: #333;
+    
     border: none;
     color: white;
     padding: 8px 16px;
@@ -539,25 +549,25 @@ html, body {
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
     height: 100%;
-
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
-
+    
     background-position: contain;
     position: relative;
 }
@@ -566,13 +576,13 @@ html, body {
     position: absolute;
     top: 1%;
     left: 27%;
-
+    
     border-radius: 25px;
     padding: 25px;
-
+    
     width: 40vw;
     height: 91vh;
-
+    
     background: #FFFFFF;
     opacity: 0.9;
 }
@@ -589,11 +599,11 @@ html, body {
 }
 
 .first-reset-image-form button , .first-reset-image-form input[type=submit]{
-	font-size: 1.5vw;
-
-	float: right;
-	background-color: #333;
-
+    font-size: 1.5vw;
+    
+    float: right;
+    background-color: #333;
+    
     border: none;
     color: white;
     padding: 8px 16px;
@@ -604,30 +614,30 @@ html, body {
     cursor: pointer;
 }
 
-.first-reset-image {
+.first-request-image {
     background-image: url("NYU_White_Bus-Passenger.jpg");
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
     height: 100%;
-
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
-
+    
     background-position: contain;
     position: relative;
 }
@@ -636,13 +646,13 @@ html, body {
     position: absolute;
     top: 1%;
     left: 27%;
-
+    
     border-radius: 25px;
     padding: 25px;
-
+    
     width: 40vw;
     height: 91vh;
-
+    
     background: #FFFFFF;
     opacity: 0.9;
 }
@@ -659,11 +669,11 @@ html, body {
 }
 
 .first-request-image-form button {
-	font-size: 1.5vw;
-
-	float: right;
-	background-color: #333;
-
+    font-size: 1.5vw;
+    
+    float: right;
+    background-color: #333;
+    
     border: none;
     color: white;
     padding: 8px 16px;
@@ -674,16 +684,21 @@ html, body {
     cursor: pointer;
 }
 
-input[type=text], input[type=time], input[type=number], input[type=password] {
-    width: 100%;
+input[type=text], input[type=time], input[type=number], input[type=password], select, .custom-select > .select-selected {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
+}
+
+input {
     font-size: 1.5vw;
+}
+
+.custom-select > .select-selected {
+    padding-right: 30px;
 }
 
 input[type=text]:focus {
@@ -695,25 +710,25 @@ input[type=text]:focus {
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
     height: 100%;
-
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
-
+    
     background-position: contain;
     position: relative;
 }
@@ -722,13 +737,13 @@ input[type=text]:focus {
     position: absolute;
     top: 1%;
     left: 27%;
-
+    
     border-radius: 25px;
     padding: 25px;
-
+    
     width: 40vw;
     height: 91vh;
-
+    
     background: #FFFFFF;
     opacity: 0.9;
 }
@@ -752,11 +767,11 @@ input[type=text]:focus {
 }
 
 .first-account-image-form button {
-  font-size: 1.5vw;
-
-  float: right;
-  background-color: #333;
-
+    font-size: 1.5vw;
+    
+    float: right;
+    background-color: #333;
+    
     border: none;
     color: white;
     padding: 8px 16px;
@@ -772,143 +787,204 @@ input[type=text]:focus {
     background-repeat: no-repeat;
     
     display: block;
-
+    
     border: 0;
-
+    
     margin: 0;
     padding: 0;
-
+    
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     max-width: 100%;
     height: 100%;
-
+    
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: cover;
 
-    background-position: contain;
-    position: relative;
+background-position: contain;
+position: relative;
 }
 
 .first-logout-image-text {
-    line-height: 1.8;
-    text-align: center;
+line-height: 1.8;
+text-align: center;
 
-    position: absolute;
-    top: 34%;
-    left: 3.6%;
+position: absolute;
+top: 34%;
+left: 3.6%;
 
-    color: white;
+color: white;
 }
 
 .first-logout-image-text h1 {
-	font-size: 3.2vw;
+font-size: 3.2vw;
 }
 
 .first-logout-image-text h2 {
-	font-size: 2.2vw;
+font-size: 2.2vw;
 }
 
 .first-error-404-image {
-    background-image: url("NYU_White_Bus-Not_in_Service.jpg");
-    background-repeat: no-repeat;
-    
-    display: block;
+background-image: url("NYU_White_Bus-Not_in_Service.jpg");
+background-repeat: no-repeat;
 
-    border: 0;
+display: block;
 
-    margin: 0;
-    padding: 0;
+border: 0;
 
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+margin: 0;
+padding: 0;
 
-    max-width: 100%;
-    height: 100%;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
 
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: cover;
+max-width: 100%;
+height: 100%;
 
-    background-position: contain;
-    position: relative;
+-webkit-background-size: contain;
+-moz-background-size: contain;
+-o-background-size: contain;
+background-size: cover;
+
+background-position: contain;
+position: relative;
 }
 
 .first-error-404-image-text {
-    line-height: 1;
-    text-align: center;
+line-height: 1;
+text-align: center;
 
-    position: absolute;
-    top: 36%;
-    left: 3.6%;
+position: absolute;
+top: 36%;
+left: 3.6%;
 
-    color: white;
+color: white;
 }
 
 .first-error-404-image-text h1 {
-	font-size: 3.2vw;
+font-size: 3.2vw;
 }
 
 .first-error-404-image-text h2 {
-	font-size: 2.2vw;
+font-size: 2.2vw;
 }
 
 .footer-one {
-	left: 0;
-	bottom: 0;
-	width: 100%;
+left: 0;
+bottom: 0;
+width: 100%;
 
-	margin: 0;
-	padding: 0;
+margin: 0;
+padding: 0;
 
-	overflow: hidden;
-	background-color: #583285;
+overflow: hidden;
+background-color: #583285;
 
-	font-size: 2vw;
+font-size: 2vw;
 
-	float: left;
-	display: block;
-	color: white;
-	text-align: center;
-	text-decoration: none;
+float: left;
+display: block;
+color: white;
+text-align: center;
+text-decoration: none;
 }
 
 .main-container {
-	float: left;
-	position: relative;
-	left: 50%;
+float: left;
+position: relative;
+left: 50%;
 }
 
 .fixer-container {
-	float: left;
-	position: relative;
-	left: -50%;
+float: left;
+position: relative;
+left: -50%;
 }
 
 .footer-two {
-	left: 0;
-	bottom: 0;
-	width: 100%;
+left: 0;
+bottom: 0;
+width: 100%;
 
+margin: 0;
+padding: 0;
+
+overflow: hidden;
+background-color: #583285;
+
+font-size: 2vw;
+
+float: left;
+display: block;
+color: white;
+text-align: center;
+text-decoration: none;
+}
+
+#select_day + .select-selected {
+	width: 8em;
+}
+
+#select-orig + .select-selected {
+	width: 150px;
+}
+
+#output {
+	background: #fff5ee;
+	padding: 0 0 1px;
+	margin: 0 0 -1px;
+}
+
+#output * {
+	font-size: 11pt;
+}
+
+#output > p {
+	background: #57068c;
+	color: #fff;
+	margin: 0 0 15px;
+	padding: 10px;
+	font-size: 32pt;
+}
+
+#output > ol, #output > ul {
 	margin: 0;
 	padding: 0;
+}
 
-	overflow: hidden;
-	background-color: #583285;
+#output > * > li {
+	list-style-type: none;
+	background: #fdd9b5;
+	border-radius: 25px;
+	margin: 0 10px 25px;
+	padding: 10px 25px 25px;
+	font-size: 28pt;
+}
 
-	font-size: 2vw;
+#output > * > li > ol, #output > * > li > ul {
+	background: #fff;
+	padding: 15px 50px;
+	margin: 10px -25px -25px;
+	border-radius: 25px;
+}
 
-	float: left;
-	display: block;
-	color: white;
-	text-align: center;
-	text-decoration: none;
+#output > * > li > * > li, #output > * > li > * > li > * {
+	font-size: 16pt;
+	margin: 10px 0;
+}
+
+#output .itinerary-time {
+	font-weight: bold;
+	background: #eef;
+}
+
+#output .itinerary-node {
+	background: #efe;
 }
