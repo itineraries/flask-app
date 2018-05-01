@@ -18,11 +18,12 @@
 			<li class="dropdown">
 				<a href="javascript:void(0)" class="dropbtn">About</a>
 				<div class="dropdown-content">
-					<a href="#">Introduction</a>
-					<a href="#">Team</a>
+					<a href="/About">Introduction</a>
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-of-use">Terms of Use</a>
 				</div>
 			</li>
-			<li><a href="/contact">Contact</a></li>
+			<li><a href="/Contact">Contact</a></li>
 			<li><a href="/view">View Saved Locations</a></li>
 			<li><a href="/departures">Departure List</a></li>
 			{% if current_user.is_authenticated %}
@@ -48,14 +49,18 @@
 							<span>Origin</span>
 							<div>
 								<input name="orig" id="text-orig" type="text" value="{{ origin|e }}" list="stops">
+									{%if current_user.is_authenticated %}
 			    					<button type = "Submit" name="save_loc_orig"> Favorite </button>
+									{% endif %}
 							</div>
 						</label>
 						<label>
 							<span>Destination</span>
 							<div>
 								<input name="dest" id="text-dest" type="text" value="{{ destination|e }}" list="stops">
+								{% if current_user.is_authenticated %}
 								<button type = "Submit" name="save_loc_dest"> Favorite </button>
+								{% endif %}
 							</div>
 						</label>
 					</div>
@@ -161,9 +166,7 @@
 				</form>
 			</div>
 		</div>
-		<div id="output">
-			<div id="output">{{ output_escaped|safe }}</div>
-		</div>
+		<div id="output">{{ output_escaped|safe }}</div>
 		<div class="footer-one">
 			<div class="main-container">
 				<div class="fixer-container">

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="icon" href="{{url_for('static', filename = 'NYU_CTIP_Logo-Purple.png') }}" type="image/gif" sizes="16x16">
-    <title>Request Password Reset | NYU CTIP</title>
+    <title>Contact | NYU CTIP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link
@@ -31,27 +31,11 @@
 				<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
 			{% endif %}		
 		</ul>
-	<div class="first-request-image form-section">
-		<div class="first-request-image-form form-container form-container-single-column">
-			{{ form.hidden_tag() }}
-
-			<h1>Request Password Reset</h1>
-			<p>We all forget our passwords sometimes!</p>
-			<form action="/reset_password_request" method="post">
-				<div class="form-table">
-					<div>
-						<span>
-							{{ form.email(placeholder = "Email*") }}
-				            {% for error in form.email.errors %}
-				            	<span style="color: red;">[{{ error }}]</span>
-				            {% endfor %}
-						</span>
-					</div>
-				</div>
-						{{ form.submit() }}
-			</form>
-			<p>* indicates a required field</p>
-		</div>
+	<div class="text">
+		<h1 align="center"><i>Contact</i></h1>
+		<hr>
+		<h2>Got a question?</h2>
+		<p>Please email <b><a href="mailto:info@nyuctip.com?Subject=Customer%20Support" target="_top">info@nyuctip.com</a></b> with a detailed description of any issues you may be experiencing when using our site so that we can better assess them.</p>
 	</div>
 	<div class="footer-one">
 		<div class="main-container">

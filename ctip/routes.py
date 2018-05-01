@@ -147,9 +147,7 @@ def departures():
         # Put the list to the output to the user.
         if markup_departures:
             output_escaped = \
-                "\n\t\t\t\t<p>Departures from " + \
-                "<span class=\"itinerary-node\">" + cgi.escape(origin) + \
-                "</span>:</p>\n\t\t\t\t<ul>\n" + markup_departures + \
+                "\n\t\t\t\t<p>Departures:</p>\n\t\t\t\t<ul>\n" + markup_departures + \
                 "\t\t\t\t</ul>\n\t\t\t"
         else:
             output_escaped = \
@@ -247,7 +245,7 @@ def reset_password_request():
     if current_user.is_authenticated:
         return redirect(url_for('root'))
     form = ResetPasswordRequestForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         user = User.objects(email=form.email.data).first()
         print(user.email)
         if user:
@@ -284,7 +282,24 @@ def confirm_email(token):
         user.confirmed = True
         user.save()
         flash('You have confirmed your account. Thanks!', 'success')
-    return redirect(url_for('root'))        
+    return redirect(url_for('root')) 
+
+
+@app.route('/About')
+def About_view():
+    return render_template("About.html")
+
+@app.route('/privacy-policy')
+def Privacy_Policy_view():
+    return render_template("Privacy-Policy.html")
+
+@app.route('/terms-of-use')
+def terms_of_use_view():
+    return render_template('terms-of-use.html')
+
+@app.route('/Contact')
+def contact_view():
+    return render_template('Contact.html')       
     
 
 @app.route("/logout")
