@@ -147,9 +147,7 @@ def departures():
         # Put the list to the output to the user.
         if markup_departures:
             output_escaped = \
-                "\n\t\t\t\t<p>Departures from " + \
-                "<span class=\"itinerary-node\">" + cgi.escape(origin) + \
-                "</span>:</p>\n\t\t\t\t<ul>\n" + markup_departures + \
+                "\n\t\t\t\t<p>Departures:</p>\n\t\t\t\t<ul>\n" + markup_departures + \
                 "\t\t\t\t</ul>\n\t\t\t"
         else:
             output_escaped = \
