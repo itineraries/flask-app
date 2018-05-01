@@ -247,7 +247,7 @@ def reset_password_request():
     if current_user.is_authenticated:
         return redirect(url_for('root'))
     form = ResetPasswordRequestForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         user = User.objects(email=form.email.data).first()
         print(user.email)
         if user:
