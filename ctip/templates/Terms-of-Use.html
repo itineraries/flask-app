@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="icon" href="{{url_for('static', filename = 'NYU_CTIP_Logo-Purple.png') }}"  type="image/gif" sizes="16x16">
+    <title>Terms of Use | NYU CTIP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+		rel="stylesheet"
+		type="text/css"
+		href="{{ url_for('static', filename='style.css') }}"
+	>
+</head>
+<body>
+		<ul class="navbar">
+			<li><a href="/">Home</a></li>
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn">About</a>
+				<div class="dropdown-content">
+					<a href="/About">Introduction</a>
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-of-use">Terms of Use</a>
+				</div>
+			</li>
+			<li><a href="/Contact">Contact</a></li>
+			<li><a href="/view">View Saved Locations</a></li>
+			<li><a href="/departures">Departure List</a></li>
+			{% if current_user.is_authenticated %}
+				<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+			{% else %}
+				<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
+			{% endif %}		
+		</ul>
+	<div class="first-terms-image">
+		<div class="first-terms-image-text">
+			<h1>New York University Campus Transportation Itinerary Planner</h1>
+			<h2><i>Terms of Use</i></h2>
+		</div>
+	</div>
+	<div class="text">
+		<h2>Acceptance of Terms</h2>
+		<p>When the user accesses this site, the user acknowledges that he or she has read and agree to abide by the terms described below. If the user does not agree to the terms discussed here, he or she should exit this site now.</p>
+
+		<h2>Copyright Notice</h2>
+		<p>Everything on this site is copyrighted. The copyrights are owned by NYU CTIP and the original creators of the material: Samridhi Grover, David Tsai, and Vivian Zhao. However, the user is free to view, copy, print, and distribute the material from this site, so long as:</p>
+		<ul>
+			<li>The material is used for information only</li>
+			<li>The material is used for non-commercial purposes only</li>
+			<li>The material is not identified as NYU CTIP confidential.</li>
+		</ul>
+
+		<h2>Trademarks</h2>
+		<p>The logo of NYU CTIP is a part of the trademarks or service marks of Take a Break, Inc. The user may not use it or any other NYU CTIP trademarks or service marks without the written permission of NYU CTIP.</p>
+
+		<h2>No Warranty</h2>
+		<p>While NYU CTIP attempts to provide accurate information on this website, it assumes no responsibility for accuracy. NYU CTIP may change the information on this site at any time without notice. The material on this site is provided “as is” and does not constitute a warranty of any kind, either expressed or implied. NYU CTIP disclaims all warranties, expressed or implied. This includes, but is not limited to: fitness for a particular purpose and non-infringement. It also includes any expressed or implied warranties arising from any course of: dealing, usage, or trade practice.</p>
+
+		<h2>This page was last updated on May 1, 2018.</h2>
+	</div>
+	<div class="footer-one">
+		<div class="main-container">
+			<div class="fixer-container">
+				<ul>
+					<li><a href="/terms-of-use">Terms of Use</a></li>
+					<li><a href="/privacy-policy">Privacy Policy</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-two">
+		<p>&copy; 2017 New York University Campus Transportation Itinerary Planner</p>
+		<p>All Rights Reserved</p>
+		<img src="{{ url_for('static', filename='miny_wht_on_trans.gif') }}" alt="Made in NY Logo" width="50" height="50">
+	</div>
+</body>
+</html>
