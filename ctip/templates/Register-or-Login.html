@@ -17,11 +17,12 @@
 			<li class="dropdown">
 				<a href="javascript:void(0)" class="dropbtn">About</a>
 				<div class="dropdown-content">
-					<a href="#">Introduction</a>
-					<a href="#">Team</a>
+					<a href="/About">Introduction</a>
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-of-use">Terms of Use</a>
 				</div>
 			</li>
-			<li><a href="/contact">Contact</a></li>
+			<li><a href="/Contact">Contact</a></li>
 			<li><a href="/view">View Saved Locations</a></li>
 			<li><a href="/departures">Departure List</a></li>
 			{% if current_user.is_authenticated %}
@@ -30,79 +31,97 @@
 				<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
 			{% endif %}		
 		</ul>
-	<div class="first-login-image">
-		<div class="first-login-image-form-one">
-			<center><h1><i>Register</i></h1></center>
-			<hr>
-			<p align="center">It's totally free!</p>
+	<div class="first-login-image form-section">
+		<div class="first-login-image-form first-login-image-form-one form-container form-container-single-column">
+			<h1>Register</h1>
+			<p>It's totally free!</p>
 			<form action="/register" method="post">
-				{{ form_r.hidden_tag() }}
-
-				{{ form_r.first_name(placeholder="First name*") }}
-				{% for error in form_r.first_name.errors %}
-            		<span style="color: red;">[{{ error }}]</span>
-            	{% endfor %}
-
-            	{{ form_r.last_name(placeholder="Last name*") }}
-            	{% for error in form_r.last_name.errors %}
-            		<span style="color: red;">[{{ error }}]</span>
-            	{% endfor %}
-
-	            {{ form_r.email(placeholder = "Email*") }}
-	            {% for error in form_r.email.errors %}
-	            <span style="color: red;">[{{ error }}]</span>
-	            {% endfor %}
-
-	            {{ form_r.password(placeholder="Type a password*") }}
-	            {% for error in form_r.password.errors %}
-	            <span style="color: red;">[{{ error }}]</span>
-	            {% endfor %}
-
-	            {{ form_r.password2(placeholder="Retype the password*") }}
-	            {% for error in form_r.password2.errors %}
-	            <span style="color: red;">[{{ error }}]</span>
-	            {% endfor %}
+				<div class="form-table">
+					{{ form_r.hidden_tag() }}
+					<div>
+						<span>
+							{{ form_r.first_name(placeholder="First name*") }}
+							{% for error in form_r.first_name.errors %}
+			            		<span style="color: red;">[{{ error }}]</span>
+			            	{% endfor %}
+						</span>
+					</div>
+					<div>
+						<span>
+			            	{{ form_r.last_name(placeholder="Last name*") }}
+			            	{% for error in form_r.last_name.errors %}
+			            		<span style="color: red;">[{{ error }}]</span>
+			            	{% endfor %}
+						</span>
+					</div>
+					<div>
+						<span>
+				            {{ form_r.email(placeholder = "Email*") }}
+				            {% for error in form_r.email.errors %}
+				            	<span style="color: red;">[{{ error }}]</span>
+				            {% endfor %}
+						</span>
+					</div>
+					<div>
+						<span>
+				            {{ form_r.password(placeholder="Type a password*") }}
+				            {% for error in form_r.password.errors %}
+				            	<span style="color: red;">[{{ error }}]</span>
+				            {% endfor %}
+						</span>
+					</div>
+					<div>
+						<span>
+				            {{ form_r.password2(placeholder="Retype the password*") }}
+				            {% for error in form_r.password2.errors %}
+				            	<span style="color: red;">[{{ error }}]</span>
+				            {% endfor %}
+						</span>
+					</div>
 			
-			<div class="main-container">
-				<div class="fixer-container">
-					{{ form_r.submit(class = "button") }}
+					<div class="form-actions">
+						{{ form_r.submit() }}
+					</div>
 				</div>
-			</div>
 			</form>
-			<br><br><br><br>
-			<hr>
-			<p align="center">* indicates a required field</p>
+
+			<p>* indicates a required field</p>
 		</div>
-		<div class="first-login-image-form-two">
-			<center><h1><i>Login</i></h1></center>
-			<hr>
-			<p align="center">Welcome back!</p>
+		<div class="first-login-image-form first-login-image-form-two form-container form-container-single-column">
+			<h1>Login</h1>
+			<p>Welcome back!</p>
 			<form action="/login" method="post">
 				{{ form_l.hidden_tag() }}
-	            {{ form_l.email(placeholder = "Email*") }}
-	            {% for error in form_l.email.errors %}
-	            	<span style="color: red;">[{{ error }}]</span>
-	            {% endfor %}
-
-	            {{ form_l.password(placeholder="Type a password*") }}
-	            {% for error in form_l.password.errors %}
-	            	<span style="color: red;">[{{ error }}]</span>
-	            {% endfor %}
-	            <p>{{ form_l.remember_me() }} {{ form_l.remember_me.label }}</p>
-
-	            <div class="main-container">
-					<div class="fixer-container">
-						{{ form_l.submit(class = "button") }}
+				<div class="form-table">
+					<div>
+						<span>		
+				            {{ form_l.email(placeholder = "Email*") }}
+				            {% for error in form_l.email.errors %}
+				            	<span style="color: red;">[{{ error }}]</span>
+				            {% endfor %}
+						</span>
 					</div>
+					<div>
+						<span>
+				            {{ form_l.password(placeholder="Type a password*") }}
+				            {% for error in form_l.password.errors %}
+				            	<span style="color: red;">[{{ error }}]</span>
+				            {% endfor %}
+						</span>
+					</div>
+				</div>
+				<div class="form-actions">
+					<p><a href="/reset_password_request">Forgot password?</a></p>
+				</div>
+				<div class="form-actions">
+	            	<p>{{ form_l.remember_me() }} {{ form_l.remember_me.label }}</p>	
+	            </div>				
+				<div class="form-actions">
+					{{ form_l.submit(class = "button") }}
 				</div>
 	            
 			</form>
-			<p align="right"><a href="/reset_password_request">Forgot password?</a></p>
-			
-			
-			<br><br><br><br>
-			<hr>
-			<p align="center"><sup>*</sup> indicates a required field</p>
+			<p>* indicates a required field</p>
 		</div>
 	</div>
 	<div class="footer-one">

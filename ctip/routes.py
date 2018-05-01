@@ -284,7 +284,24 @@ def confirm_email(token):
         user.confirmed = True
         user.save()
         flash('You have confirmed your account. Thanks!', 'success')
-    return redirect(url_for('root'))        
+    return redirect(url_for('root')) 
+
+
+@app.route('/About')
+def About_view():
+    return render_template("About.html")
+
+@app.route('/privacy-policy')
+def Privacy_Policy_view():
+    return render_template("Privacy-Policy.html")
+
+@app.route('/terms-of-use')
+def terms_of_use_view():
+    return render_template('terms-of-use.html')
+
+@app.route('/Contact')
+def contact_view():
+    return render_template('Contact.html')       
     
 
 @app.route("/logout")

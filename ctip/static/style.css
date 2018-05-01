@@ -171,7 +171,9 @@ html, body {
 .second-home-image, .first-departures-image {
     background-image: url("Data_ABCEFG_on_Map.png");
     background-repeat: no-repeat;
-    
+}
+
+.form-section {
     display: block;
     
     border: 0;
@@ -198,19 +200,18 @@ html, body {
 }
 
 .form-container {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     padding: 35px;
 	margin: 0 0 10px;
     width: auto;
     transition: 0.5s;
 	display: inline-block;
+	vertical-align: top;
 }
 
 @media screen and (min-width: 780px) {
-    .second-home-image, .first-departures-image {
-        padding: 10px;
-    }
     .form-container {
+		margin: 10px;
         padding: 25px;
         border-radius: 25px;
         width: 700px;
@@ -228,13 +229,13 @@ html, body {
 }
 
 .form-container h1 {
-    border-top: 1px inset;
     padding-top: 12px;
     font-size: 16pt;
     margin-top: 6px;
     margin-bottom: 6px;
     text-align: center;
     font-style: italic;
+    border-top: 1px inset;
 }
 
 .form-table {
@@ -426,90 +427,34 @@ html, body {
 .first-login-image {
     background-image: url("NYU_White_Bus-Passenger.jpg");
     background-repeat: no-repeat;
-    
-    display: block;
-    
-    border: 0;
-    
-    margin: 0;
-    padding: 0;
-    
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    max-width: 100%;
-    height: 100%;
-    
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: cover;
-    
-    background-position: contain;
-    position: relative;
+	text-align: center;
 }
 
-.first-login-image-form-one {
-    position: absolute;
-    top: 1%;
-    left: 3%;
-    
-    border-radius: 25px;
-    padding: 25px;
-    
-    width: 40vw;
-    height: 91vh;
-    
-    background: #FFFFFF;
-    opacity: 0.9;
+.first-login-image-form {
+	width: 100%;
+	max-width: 400px;
+	text-align: left;
 }
 
-.first-login-image-form-one p {
-    font-size: 1.5vw;
+.form-container-single-column h1 {
+    font-size: 28pt;
+    margin: 6px 0;
+	padding-bottom: 10px;
+	border-top: none;
+	border-bottom: 1px solid #888;
+	text-align: center;
 }
 
-.first-login-image-form-one h1 {
-    font-size: 3vw;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    float: middle;
+.form-container-single-column p {
+	text-align: center;
 }
 
-.first-login-image-form-one button , .first-login-image-form-one input[type=submit] {
-    font-size: 1.5vw;
-    
-    float: right;
-    background-color: #333;
-    
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 6px 4px;
-    cursor: pointer;
+.form-container-single-column .form-table {
+	width: 100%;
 }
 
-.first-login-image-form-two {
-    position: absolute;
-    top: 1%;
-    right: 3%;
-    
-    border-radius: 25px;
-    padding: 25px;
-    
-    width: 40vw;
-    height: 91vh;
-    
-    background: #FFFFFF;
-    opacity: 0.9;
-}
-
-.first-login-image-form-two p {
-    font-size: 1.5vw;
+.form-container-single-column .form-actions {
+	text-align: center;
 }
 
 .first-login-image-form-two a {
@@ -521,167 +466,26 @@ html, body {
     text-decoration: underline;
 }
 
-.first-login-image-form-two h1 {
-    font-size: 3vw;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    float: middle;
-}
-
-.first-login-image-form-two button, .first-login-image-form-two input[type=submit] {
-    font-size: 1.5vw;
-    
-    float: right;
-    background-color: #333;
-    
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 6px 4px;
-    cursor: pointer;
-}
-
 .first-reset-image {
     background-image: url("NYU_White_Bus-Passenger.jpg");
     background-repeat: no-repeat;
-    
-    display: block;
-    
-    border: 0;
-    
-    margin: 0;
-    padding: 0;
-    
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    max-width: 100%;
-    height: 100%;
-    
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: cover;
-    
-    background-position: contain;
-    position: relative;
+	text-align: center;
 }
 
 .first-reset-image-form {
-    position: absolute;
-    top: 1%;
-    left: 27%;
-    
-    border-radius: 25px;
-    padding: 25px;
-    
-    width: 40vw;
-    height: 91vh;
-    
-    background: #FFFFFF;
-    opacity: 0.9;
-}
-
-.first-reset-image-form p {
-    font-size: 1.5vw;
-}
-
-.first-reset-image-form h1 {
-    font-size: 3vw;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    float: middle;
-}
-
-.first-reset-image-form button , .first-reset-image-form input[type=submit]{
-    font-size: 1.5vw;
-    
-    float: right;
-    background-color: #333;
-    
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 6px 4px;
-    cursor: pointer;
+    text-align: left;
+	max-width: 600px;
 }
 
 .first-request-image {
     background-image: url("NYU_White_Bus-Passenger.jpg");
     background-repeat: no-repeat;
-    
-    display: block;
-    
-    border: 0;
-    
-    margin: 0;
-    padding: 0;
-    
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    max-width: 100%;
-    height: 100%;
-    
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: cover;
-    
-    background-position: contain;
-    position: relative;
+	text-align: center;
 }
 
 .first-request-image-form {
-    position: absolute;
-    top: 1%;
-    left: 27%;
-    
-    border-radius: 25px;
-    padding: 25px;
-    
-    width: 40vw;
-    height: 91vh;
-    
-    background: #FFFFFF;
-    opacity: 0.9;
-}
-
-.first-request-image-form p {
-    font-size: 1.5vw;
-}
-
-.first-request-image-form h1 {
-    font-size: 3vw;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    float: middle;
-}
-
-.first-request-image-form button {
-    font-size: 1.5vw;
-    
-    float: right;
-    background-color: #333;
-    
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 6px 4px;
-    cursor: pointer;
+	text-align: left;
+	max-width: 600px;
 }
 
 input[type=text], input[type=time], input[type=number], input[type=password], select, .custom-select > .select-selected {
@@ -756,14 +560,12 @@ input[type=text]:focus {
     font-size: 3vw;
     margin-top: 6px;
     margin-bottom: 6px;
-    float: middle;
 }
 
 .first-account-image-form h2 {
     font-size: 2vw;
     margin-top: 6px;
     margin-bottom: 6px;
-    float: middle;
 }
 
 .first-account-image-form button {
@@ -826,6 +628,139 @@ font-size: 3.2vw;
 }
 
 .first-logout-image-text h2 {
+font-size: 2.2vw;
+}
+
+.embed {
+	position: relative;
+}
+
+.embed__item {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+
+.embed--16by9 {
+	padding-top: 56.25%;
+}
+
+.text {
+    padding: 50px;
+}
+
+.text a {
+    color: black;
+    text-decoration: none;
+}
+
+.text a:hover {
+    text-decoration: underline;
+}
+
+.text li {
+    font-size: 2vw;
+}
+
+.responsive {
+	width: 100%;
+	max-width: 400px;
+	height: auto;
+}
+
+.first-terms-image {
+background-image: url("NYU_White_Bus-Sunny.jpg");
+background-repeat: no-repeat;
+
+display: block;
+
+border: 0;
+
+margin: 0;
+padding: 0;
+
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+
+max-width: 100%;
+height: 100%;
+
+-webkit-background-size: contain;
+-moz-background-size: contain;
+-o-background-size: contain;
+background-size: cover;
+
+background-position: contain;
+position: relative;
+}
+
+.first-terms-image-text {
+line-height: 1;
+text-align: center;
+
+position: absolute;
+top: 36%;
+left: 3.6%;
+
+color: white;
+}
+
+.first-terms-image-text h1 {
+font-size: 3.2vw;
+}
+
+.first-terms-image-text h2 {
+font-size: 2.2vw;
+}
+
+.first-privacy-image {
+background-image: url("NYU_White_Bus-Fire_Hydrant.jpg");
+background-repeat: no-repeat;
+
+display: block;
+
+border: 0;
+
+margin: 0;
+padding: 0;
+
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+
+max-width: 100%;
+height: 100%;
+
+-webkit-background-size: contain;
+-moz-background-size: contain;
+-o-background-size: contain;
+background-size: cover;
+
+background-position: contain;
+position: relative;
+}
+
+.first-privacy-image-text {
+line-height: 1;
+text-align: center;
+
+position: absolute;
+top: 36%;
+left: 3.6%;
+
+color: white;
+}
+
+.first-privacy-image-text h1 {
+font-size: 3.2vw;
+}
+
+.first-privacy-image-text h2 {
 font-size: 2.2vw;
 }
 
