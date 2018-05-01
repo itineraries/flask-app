@@ -881,12 +881,15 @@ text-decoration: none;
 	font-size: 11pt;
 }
 
-#output > p {
+#output > h1, #output > p {
 	background: #57068c;
 	color: #fff;
 	margin: 0 0 15px;
 	padding: 10px;
+}
+#output > h1 {
 	font-size: 32pt;
+	font-weight: normal;
 }
 
 #output > ol, #output > ul {
@@ -918,8 +921,10 @@ text-decoration: none;
 #output .itinerary-time {
 	font-weight: bold;
 	background: #eef;
+	color: #000;
 }
 
 #output .itinerary-node {
 	background: #efe;
+	color: #000;
 }
