@@ -14,9 +14,19 @@
 <body>
 	<ul>
 		<li><a href="/">Home</a></li>
-		<li><a href="/about">About</a></li>
+		<li class="dropdown">
+			<a href="javascript:void(0)" class="dropbtn">About</a>
+			<div class="dropdown-content">
+				<a href="#">Introduction</a>
+				<a href="#">Team</a>
+			</div>
+		</li>
 		<li><a href="/contact">Contact</a></li>
-		<li style="float:right"><a class="active" href="/login">Login</a></li>
+		{% if current_user.is_authenticated %}
+			<li style="float:right"><a class="active" href="/Logout">Logout</a></li>
+		{% else %}
+			<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
+		{% endif %}
 	</ul>
 	<div class="first-login-image">
 		<div class="first-login-image-form-one">
