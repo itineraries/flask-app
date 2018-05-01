@@ -50,7 +50,7 @@
 							<div>
 								<input name="orig" id="text-orig" type="text" value="{{ origin|e }}" list="stops">
 									{%if current_user.is_authenticated %}
-			    					<button type = "Submit" name="save_loc_orig"> Favorite </button>
+			    					<button type = "Submit" name="save_loc_orig"> Add Favorite </button>
 									{% endif %}
 							</div>
 						</label>
@@ -59,7 +59,7 @@
 							<div>
 								<input name="dest" id="text-dest" type="text" value="{{ destination|e }}" list="stops">
 								{% if current_user.is_authenticated %}
-								<button type = "Submit" name="save_loc_dest"> Favorite </button>
+								<button type = "Submit" name="save_loc_dest"> Add Favorite </button>
 								{% endif %}
 							</div>
 						</label>
