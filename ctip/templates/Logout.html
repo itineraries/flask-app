@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="icon" href="{{url_for('static', filename = 'NYU_CTIP_Logo-Purple.png') }}" type="image/gif" sizes="16x16">
-    <title>Logout | NYU CTIP</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link
+	<head>
+		<link rel="icon" href="{{url_for('static', filename = 'NYU_CTIP_Logo-Purple.png') }}" type="image/gif" sizes="16x16">
+		<title>Logout | NYU CTIP</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link
 			rel="stylesheet"
 			type="text/css"
 			href="{{ url_for('static', filename='style.css') }}"
 		>
-</head>
-<body>
+	</head>
+	<body>
 		<ul class="navbar">
 			<li><a href="/">Home</a></li>
 			<li class="dropdown">
@@ -26,31 +26,31 @@
 			<li><a href="/view">View Saved Locations</a></li>
 			<li><a href="/departures">Departure List</a></li>
 			{% if current_user.is_authenticated %}
-				<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+			<li style="float:right"><a class="active" href="/logout">Logout</a></li>
 			{% else %}
-				<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
+			<li style="float:right"><a class="active" href="/login">Register/Login</a></li>
 			{% endif %}		
 		</ul>
-	<div class="first-logout-image">
-		<div class="first-logout-image-text">
-			<h1>New York University Campus Transportation Itinerary Planner</h1>
-			<h2><i>You have been successfully logged-out</i></h2>
-		</div>
-	</div>
-	<div class="footer-one">
-		<div class="main-container">
-			<div class="fixer-container">
-				<ul>
-					<li><a href="/terms-of-use">Terms of Use</a></li>
-					<li><a href="/privacy-policy">Privacy Policy</a></li>
-				</ul>
+		<div class="first-logout-image">
+			<div class="first-logout-image-text">
+				<h1>New York University Campus Transportation Itinerary Planner</h1>
+				<h2><i>You have been successfully logged-out</i></h2>
 			</div>
 		</div>
-	</div>
-	<div class="footer-two">
-		<p>&copy; 2017 New York University Campus Transportation Itinerary Planner</p>
-		<p>All Rights Reserved</p>
-		<img src= "{{ url_for('static', filename='miny_wht_on_trans.gif') }}" alt="Made in NY Logo" width="50" height="50">
-	</div>
-</body>
+		<div class="footer-one">
+			<div class="main-container">
+				<div class="fixer-container">
+					<ul>
+						<li><a href="/terms-of-use">Terms of Use</a></li>
+						<li><a href="/privacy-policy">Privacy Policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-two">
+			<p>&copy; 2017 New York University Campus Transportation Itinerary Planner</p>
+			<p>All Rights Reserved</p>
+			<img src= "{{ url_for('static', filename='miny_wht_on_trans.gif') }}" alt="Made in NY Logo" width="50" height="50">
+		</div>
+	</body>
 </html>
