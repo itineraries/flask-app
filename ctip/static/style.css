@@ -77,8 +77,11 @@ html, body {
 }
 
 .first-home-image {
-    background-image: url("NYU_Brooklyn_Bus.png");
-    background-repeat: no-repeat;
+    background: #000 url("NYU_Brooklyn_Bus.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     
     display: block;
     
@@ -95,12 +98,6 @@ html, body {
     max-width: 100%;
     height: 100%;
     
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: cover;
-    
-    background-position: contain;
     position: relative;
 }
 
