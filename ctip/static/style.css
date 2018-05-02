@@ -416,6 +416,7 @@ html, body {
 .first-departures-image-form-two {
     width: auto;
     max-width: 300px;
+	vertical-align: bottom;
 }
 
 .first-departures-image-form-two label {
