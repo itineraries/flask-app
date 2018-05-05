@@ -173,7 +173,7 @@ def favicon():
     # http://flask.pocoo.org/docs/0.12/patterns/favicon/
     return send_from_directory(
         os.path.join(app.root_path, "static"),
-        "NYU_CTIP_Logo-Purple-64x64.ico",
+        "favicon.ico",
         mimetype="image/vnd.microsoft.icon"
     )
 
