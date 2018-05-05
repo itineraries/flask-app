@@ -40,9 +40,9 @@ def root():
         walking_max_mode = "unlimited"
         agency_walking.set_max_seconds_unlimited()
     # Check whether we should get an itinerary.
-    document_title = "NYU CTIP"
+    document_title = ""
     if origin and destination:
-        document_title = origin + " to " + destination + " - " + document_title
+        document_title = origin + " to " + destination
         if origin == destination:
             output_escaped = \
                 "<p>The origin and destination are the same.</p>\n\t\t\t"
@@ -131,7 +131,7 @@ def departures():
     datetime_trip = get_datetime_trip()
     weekdays_checked = get_weekdays_checked(datetime_trip)
     # Check whether we should list departures.
-    document_title = "Departures - NYU CTIP"
+    document_title = "Departures"
     if origin:
         document_title = origin + " - " + document_title
         # List the departures.
@@ -173,7 +173,7 @@ def favicon():
     # http://flask.pocoo.org/docs/0.12/patterns/favicon/
     return send_from_directory(
         os.path.join(app.root_path, "static"),
-        "NYU_CTIP_Logo-Purple-64x64.ico",
+        "favicon.ico",
         mimetype="image/vnd.microsoft.icon"
     )
 
