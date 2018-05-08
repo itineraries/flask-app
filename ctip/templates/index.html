@@ -16,7 +16,7 @@
 						<label>
 							<span>Origin</span>
 							<div>
-								<input name="orig" id="text-orig" type="text" value="{{ origin|e }}" list="stops">
+								<input name="orig" id="text-orig" class="text-location" type="text" value="{{ origin|e }}" list="stops">
 									{%if current_user.is_authenticated %}
 			    					<button type = "Submit" name="save_loc_orig"> Favorite </button>
 									{% endif %}
@@ -25,7 +25,7 @@
 						<label>
 							<span>Destination</span>
 							<div>
-								<input name="dest" id="text-dest" type="text" value="{{ destination|e }}" list="stops">
+								<input name="dest" id="text-dest" class="text-location" type="text" value="{{ destination|e }}" list="stops">
 								{% if current_user.is_authenticated %}
 								<button type = "Submit" name="save_loc_dest"> Favorite </button>
 								{% endif %}
@@ -122,11 +122,11 @@
 					</div>
 					<datalist id="stops">
 						{%for stop in stops %}
-						<option>{{ stop|e }}</option>
+						<option data-category="Bus Stops">{{ stop|e }}</option>
 						{% endfor %}
 						{% if faves %}
 						{%for fav in faves %}
-						<option>{{ fav.address|e }}</option>
+						<option data-category="Your Favorites">{{ fav.address|e }}</option>
 						{% endfor %}
 						{% endif %}
 					</datalist>
@@ -134,6 +134,7 @@
 			</div>
 		</div>
 		<div id="output">{{ output_escaped|safe }}</div>
+		<input type="hidden" id="google_maps_api_key" value="{{ google_maps_api_key|e }}">
 		<script type="text/javascript" src="{{ url_for('static', filename='custom-select.min.js')}}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='app.min.js') }}"></script>
 {% include "Footer.html" %}

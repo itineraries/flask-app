@@ -121,7 +121,8 @@ def root():
         when=datetime_trip.strftime("%H:%M"),
         walking_max_mode=walking_max_mode,
         walking_max_custom=walking_max_custom,
-        output_escaped=output_escaped
+        output_escaped=output_escaped,
+        google_maps_api_key=app.config["GMAPS_CLIENT_SIDE_KEY"]
     )
 
 @app.route("/departures")

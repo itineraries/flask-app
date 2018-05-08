@@ -927,3 +927,51 @@ input[type=text]:focus {
     background: #efe;
     color: #000;
 }
+
+#autocomplete-suggestions {
+	margin: 0;
+	padding: 0;
+	border-top: none;
+	border-right: 3px solid #555;
+	border-bottom: 3px solid #555;
+	border-left: 3px solid #555;
+	overflow-y: scroll;
+	background: #333;
+	color: #fff;
+}
+
+#autocomplete-suggestions ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#autocomplete-suggestions > ul > li {
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+
+#autocomplete-suggestions li {
+	padding: 5px 20px;
+	cursor: pointer;
+}
+
+.autocomplete-suggestions-heading {
+	padding: 5px;
+	color: #ccc;
+	font-style: italic;
+}
+
+.autocomplete-suggestions-match {
+	font-weight: bold;
+}
+
+.autocomplete-suggestions-selection {
+	background: #06f;
+	color: #fff;
+}
+
+.autocomplete-suggestions-selection:active {
+	box-shadow: #333 1px 1px 5px inset;
+}
