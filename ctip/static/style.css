@@ -975,3 +975,8 @@ input[type=text]:focus {
 .autocomplete-suggestions-selection:active {
 	box-shadow: #333 1px 1px 5px inset;
 }
+
+.text-location::-webkit-calendar-picker-indicator {
+	/* https://stackoverflow.com/a/20941546/1149181 */
+	display: none;
+}
