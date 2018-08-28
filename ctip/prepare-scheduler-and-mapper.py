@@ -21,7 +21,9 @@ FILES_TO_COPY = (
 	"WalkingStatic.pickle",
 )
 SOURCE_DIR = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+    os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    ),
     "scheduler-and-mapper"
 )
 DESTINATION_DIR = os.path.join(
